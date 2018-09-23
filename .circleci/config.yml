@@ -36,6 +36,7 @@ jobs:
       - image: circleci/python:3.6
     steps:
       - run: echo "It works!"
+      - run: echo $RUN_EXTRA_TESTS
 
   deploy:
     docker:

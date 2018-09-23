@@ -693,7 +693,8 @@ class Api():
         if verb == 'GET':
             resp = requests.get(request_url, auth=auth, headers=headers)
         elif verb == 'POST':
-            resp = requests.post(request_url, auth=auth, headers=headers, data=data)
+            print(data)
+            resp = requests.post(request_url, auth=auth, headers=headers, json=data)
         elif verb == 'DELETE':
             resp = requests.delete(request_url, auth=auth, headers=headers)
         else:
