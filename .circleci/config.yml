@@ -1,4 +1,8 @@
-version: 2
+version: 2.1
+
+orbs:
+  codecov: circleci/codecov@dev:marc
+
 jobs:
   build:
     docker:
@@ -26,7 +30,9 @@ jobs:
           command: |
             . venv/bin/activate
             make test
-            codecov
+
+      - codecov/upload:
+          path: htmlcov
 
       - store_artifacts:
           path: htmlcov/
