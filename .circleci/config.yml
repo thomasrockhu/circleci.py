@@ -64,7 +64,9 @@ jobs:
       
       - run:
           name: Smoke Test Install 
-          command: sudo pip3 install circleci
+          command: |
+            python --version
+            sudo pip3 install circleci
 
   test35:
     docker:
@@ -99,7 +101,9 @@ jobs:
       
       - run:
           name: Smoke Test Install 
-          command: sudo pip3 install circleci
+          command: |
+            python --version
+            sudo pip3 install circleci
 
   test36:
     docker:
@@ -134,7 +138,9 @@ jobs:
       
       - run:
           name: Smoke Test Install 
-          command: sudo pip3 install circleci
+          command: |
+            python --version
+            sudo pip3 install circleci
 
   test37:
     docker:
@@ -169,7 +175,9 @@ jobs:
       
       - run:
           name: Smoke Test Install 
-          command: sudo pip3 install circleci
+          command: |
+            python --version
+            sudo pip3 install circleci
 
   integration:
     docker:
