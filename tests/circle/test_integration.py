@@ -20,7 +20,7 @@ class TestCircleCIApi(unittest.TestCase):
             "build_parameters[CIRCLE_JOB]": "integration"
         }
 
-        resp = self.c.trigger_build('levlaz', 'circleci.py', params=params)
+        resp = self.c.trigger_build('thomasrockhu', 'circleci.py', params=params)
 
         self.assertEqual(resp['build_parameters']['CIRCLE_JOB'], 'integration')
 
@@ -56,7 +56,7 @@ rAUZ8tU0o5Ec6T0ZQkcous7OwBZGE+JLuFa3S6JfISLw42brjQ9dE5mosm7m2d4H
 3C9cAnmV6aJkTwT46OiNvUYZ8je5WP+4Kqb2ke9xw3ddk5X1n5AB4w==
 -----END RSA PRIVATE KEY-----
 """
-        resp = self.c.add_ssh_key('levlaz', 'circleci-sandbox', key, hostname='localhost')
+        resp = self.c.add_ssh_key('thomasrockhu', 'circleci-sandbox', key, hostname='localhost')
 
         # there is no response when success, so we test to make sure
         # that there is no other message as well.
@@ -66,11 +66,11 @@ rAUZ8tU0o5Ec6T0ZQkcous7OwBZGE+JLuFa3S6JfISLw42brjQ9dE5mosm7m2d4H
         # exercise a real "GET"
         resp = self.c.get_user_info()
 
-        self.assertEqual(resp['login'], 'levlaz')
+        self.assertEqual(resp['login'], 'thomasrockhu')
 
     def test_clear_cache(self):
         # execrise a real "DELETE"
-        resp = self.c.clear_cache('levlaz', 'circleci-sandbox')
+        resp = self.c.clear_cache('thomasrockhu', 'circleci-sandbox')
 
         self.assertEqual(resp['status'], 'build dependency caches deleted')
 
@@ -78,7 +78,7 @@ rAUZ8tU0o5Ec6T0ZQkcous7OwBZGE+JLuFa3S6JfISLw42brjQ9dE5mosm7m2d4H
         # use Experimental API
         self.e = Experimental(os.getenv('CIRCLE_TOKEN'))
 
-        resp = self.e.retry_no_cache('levlaz', 'circleci-sandbox', 1)
+        resp = self.e.retry_no_cache('thomasrockhu', 'circleci-sandbox', 1)
 
         self.assertTrue(resp['no_dependency_cache'])
 
@@ -92,7 +92,7 @@ rAUZ8tU0o5Ec6T0ZQkcous7OwBZGE+JLuFa3S6JfISLw42brjQ9dE5mosm7m2d4H
         self.assertTrue(len(resp) == 0)
 
     def test_download_artifact(self):
-        resp = self.c.get_artifacts('levlaz', 'circleci.py', 87)
+        resp = self.c.get_artifacts('thomasrockhu', 'circleci.py', 87)
 
         artifact = self.c.download_artifact(resp[0]['url'])
 
